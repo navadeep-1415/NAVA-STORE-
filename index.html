@@ -241,249 +241,6 @@
   .kv { margin: 0; display: flex; align-items: center; gap: 8px; font-weight: 500; }
   .pill { background: #f5f6ff; color: #1b1c33; border-radius: 999px; padding: 2px 12px; font-size: 14px; font-weight: 700; }
   .pill.ok { background: #198754; color: #fff; }
-  .fmt { background: rgba(255,255,255,.15); border-radius: 14px; padding: 12px; display: flex; flex-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style><title>NAVA SOCIAL BOOST</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-<style>
-  /* Layout: single-column mobile SMM panel. Gradient header, two stat cards, platform grid, order form card, info cards, footer, side menu, floating WhatsApp button. */
-  :root {
-    --bg: #f1f2f8;
-    --soft: #e6e7ff; --soft-fg: #3a34c8;
-    --fg: #1b1c33;
-    --muted: #5d6085;
-    --card: #ffffff;
-    --card-line: #e3e5f3;
-    --brand-a: #6a5cff;
-    --brand-b: #3f3dff;
-    --brand-deep: #4a4cff;
-    --field: #ffffff;
-    --field-fg: #23243d;
-    --field-line: #d4d7f2;
-    --on-brand: #ffffff;
-    --on-brand-soft: #d9dcff;
-    --green-a: #44e58f;
-    --green-b: #35aebd;
-    --violet-a: #6f86ea;
-    --violet-b: #7a4aa8;
-    --go-a: #28a745;
-    --go-b: #1c7a31;
-    --wa: #25d366;
-    --chip: #dcff35;
-    --chip-fg: #1b1c33;
-    --danger: #dc3545;
-    --font-body: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #11122a; --soft: #2a2d5c; --soft-fg: #b9bcff; --fg: #eceeff; --muted: #a3a7d6; --card: #1b1d3c; --card-line: #2d3060;
-      --field: #f5f6ff; --field-fg: #23243d; --field-line: #c9ccf0; --chip-fg: #1b1c33;
-      color-scheme: dark;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #11122a; --soft: #2a2d5c; --soft-fg: #b9bcff; --fg: #eceeff; --muted: #a3a7d6; --card: #1b1d3c; --card-line: #2d3060;
-    --field: #f5f6ff; --field-fg: #23243d; --field-line: #c9ccf0; --chip-fg: #1b1c33;
-    color-scheme: dark;
-  }
-
-  * { box-sizing: border-box; }
-  [hidden] { display: none !important; }
-  body {
-    background: var(--bg); color: var(--fg);
-    font-family: var(--font-body); font-size: 16px; line-height: 1.5;
-  }
-  body::before {
-    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30;
-    background: var(--brand-a);
-  }
-  .wrap {
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-  }
-  .page { max-width: 560px; margin-inline: auto; display: flex; flex-direction: column; gap: 22px; padding-block: 22px 40px; }
-
-  /* header */
-  .top {
-    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
-    background: linear-gradient(135deg, var(--brand-a), var(--brand-b));
-    color: var(--on-brand); padding-block: 12px 10px;
-    box-shadow: 0 6px 22px rgba(40, 40, 140, .25);
-  }
-  .top-in { max-width: 560px; margin-inline: auto; display: flex; align-items: center; gap: 12px; }
-  .logo { width: 52px; height: 52px; flex: none; border-radius: 50%; display: block; }
-  .brand { font-weight: 900; font-size: clamp(16px, 5.2vw, 26px); letter-spacing: -.5px; line-height: 1.1; margin: 0; flex: 1; min-width: 0; }
-  .burger { flex: none; width: 44px; height: 44px; border: 0; background: transparent; color: var(--on-brand); cursor: pointer; border-radius: 10px; display: grid; place-content: center; gap: 6px; }
-  .burger span { display: block; width: 28px; height: 2.5px; border-radius: 2px; background: var(--on-brand-soft); }
-  button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--chip); outline-offset: 2px; }
-
-  /* stat cards */
-  .stat { border-radius: 24px; padding: 28px 22px; display: flex; align-items: center; justify-content: center; gap: 22px; color: #fff; box-shadow: 0 12px 28px rgba(30, 30, 90, .18); }
-  .stat.green { background: linear-gradient(135deg, var(--green-a), var(--green-b)); }
-  .stat.violet { background: linear-gradient(135deg, var(--violet-a), var(--violet-b)); }
-  .stat .disc { width: 84px; height: 84px; border-radius: 50%; background: rgba(255,255,255,.28); display: grid; place-items: center; flex: none; }
-  .stat .disc svg { width: 46px; height: 46px; }
-  .stat .lbl { font-size: 18px; font-weight: 500; opacity: .85; }
-  .stat .val { font-size: 38px; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
-
-  /* platform card */
-  .panel { background: var(--card); border-radius: 28px; padding: 24px; box-shadow: 0 10px 30px rgba(30, 30, 90, .1); border: 1px solid var(--card-line); }
-  .panel h2 { margin: 0 0 22px; text-align: center; color: #0d6efd; font-size: 28px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 12px; }
-  .panel h2 svg { width: 28px; height: 28px; }
-  .plats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-  .plat { aspect-ratio: 1; border: 0; border-radius: 14px; display: grid; place-items: center; cursor: pointer; color: #fff; box-shadow: 0 5px 12px rgba(0,0,0,.18); transition: transform .15s; }
-  .plat:hover { transform: translateY(-2px); }
-  .plat[aria-pressed="true"] { outline: 3px solid var(--brand-deep); outline-offset: 3px; }
-  .plat svg { width: 46%; height: 46%; }
-  .p-all { background: #6c757d; } .p-yt { background: #dc3545; } .p-tt { background: #212529; } .p-ig { background: #e83e8c; }
-  .p-fb { background: #0d6efd; } .p-li { background: #0a66c2; } .p-wa { background: #198754; } .p-gg { background: #ffc107; color: #212529; } .p-of { background: #dc3545; }
-
-  /* order form card */
-  .order { background: linear-gradient(160deg, var(--brand-a), var(--brand-b)); color: var(--on-brand); border-radius: 28px; padding: 28px 24px 30px; box-shadow: 0 16px 36px rgba(50, 50, 200, .3); }
-  .order h2 { margin: 0 auto 26px; width: fit-content; font-size: 28px; font-weight: 700; display: flex; align-items: center; gap: 14px; padding-bottom: 8px; border-bottom: 2px solid rgba(255,255,255,.85); }
-  .order h2 svg { width: 36px; height: 36px; }
-  .field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
-  .field > label, .field > .lbl { font-size: 20px; font-weight: 500; color: var(--on-brand-soft); display: flex; align-items: center; gap: 10px; }
-  .field > label svg { width: 24px; height: 24px; }
-  .ctl { width: 100%; min-width: 0; height: 56px; border-radius: 16px; border: 2px solid var(--field-line); background: var(--field); color: var(--field-fg); font: inherit; font-size: 18px; padding: 0 16px; }
-  .ctl::placeholder { color: #6b6e93; }
-  select.ctl { appearance: none; -webkit-appearance: none; padding-right: 44px; text-overflow: ellipsis; border-color: #2b2c47; border-width: 2px;
-    background-image: linear-gradient(45deg, transparent 50%, #0d6efd 50%), linear-gradient(135deg, #0d6efd 50%, transparent 50%);
-    background-position: calc(100% - 22px) 25px, calc(100% - 16px) 25px; background-size: 6px 6px, 6px 6px; background-repeat: no-repeat; }
-  .hint { font-size: 17px; color: var(--on-brand-soft); margin: -4px 0 0; font-variant-numeric: tabular-nums; }
-  .err { color: #ffd1d6; font-size: 16px; font-weight: 500; min-height: 0; margin: -6px 0 12px; }
-  .price { font-weight: 700; }
-  .go { width: 100%; height: 60px; border: 0; border-radius: 16px; background: linear-gradient(135deg, var(--go-a), var(--go-b)); color: #fff; font: inherit; font-size: 26px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 14px; cursor: pointer; box-shadow: 0 8px 18px rgba(0,0,0,.2); }
-  .go svg { width: 34px; height: 34px; }
-
-  .sent { margin-top: 20px; background: var(--card); color: var(--fg); border-radius: 20px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
-  .sent h3 { margin: 0; font-size: 20px; }
-  .sent p { margin: 0; color: var(--muted); font-size: 16px; }
-  .sent pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; font-size: 15px; background: var(--bg); border-radius: 12px; padding: 12px; }
-  .wa-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--wa); color: #fff; text-decoration: none; font-weight: 700; font-size: 18px; height: 54px; border-radius: 14px; }
-  .wa-btn svg { width: 28px; height: 28px; }
-
-  /* info cards */
-  .news-head { background: linear-gradient(135deg, var(--brand-a), var(--brand-b)); color: #fff; border-radius: 28px 28px 0 0; padding: 18px 24px; font-size: 26px; font-weight: 900; display: flex; align-items: center; gap: 14px; }
-  .news-head svg { width: 32px; height: 32px; }
-  .news-body { background: var(--card); border: 1px solid var(--card-line); border-top: 0; border-radius: 0 0 28px 28px; padding: 24px 18px; display: flex; flex-direction: column; gap: 18px; }
-  .note { border: 1px solid var(--card-line); background: var(--bg); border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
-  .date { align-self: flex-start; background: var(--chip); color: var(--chip-fg); font-weight: 700; font-size: 18px; border: 3px solid #1b1c1b; border-radius: 14px; padding: 6px 16px; font-variant-numeric: tabular-nums; }
-  .note h3 { margin: 0; font-size: 26px; font-weight: 700; display: flex; align-items: center; gap: 14px; }
-  .note h3 i { flex: none; width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; }
-  .note h3 i svg { width: 28px; height: 28px; }
-  .note p { margin: 0; font-size: 19px; color: var(--muted); }
-
-  /* services list */
-  .svc-list { display: flex; flex-direction: column; gap: 10px; }
-  .svc { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--card-line); background: var(--bg); border-radius: 16px; }
-  .svc b { display: block; font-size: 16px; }
-  .svc span { color: var(--muted); font-size: 14px; }
-  .svc em { font-style: normal; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .empty { color: var(--muted); margin: 0; }
-
-  /* footer */
-  .foot { background: linear-gradient(135deg, var(--brand-a), var(--brand-b)); color: #fff; padding-block: 28px 100px; }
-  .foot-in { max-width: 560px; margin-inline: auto; display: flex; flex-direction: column; gap: 14px; align-items: center; }
-  .foot nav { display: flex; flex-wrap: wrap; gap: 14px 26px; justify-content: center; }
-  .foot a, .foot button.lnk { color: #fff; text-decoration: none; font: inherit; font-size: 20px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; cursor: pointer; padding: 0; }
-  .foot svg { width: 22px; height: 22px; }
-  .foot small { opacity: .85; font-size: 15px; text-align: center; }
-
-  /* floating whatsapp */
-  .fab { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 65; display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .fab .bubble { background: #2b2d33; color: #fff; padding: 12px 18px; border-radius: 999px; font-size: 17px; box-shadow: 0 6px 16px rgba(0,0,0,.3); }
-  .fab .btn { width: 64px; height: 64px; border-radius: 50%; background: var(--wa); display: grid; place-items: center; box-shadow: 0 8px 20px rgba(0,0,0,.3); flex: none; }
-  .fab .btn svg { width: 38px; height: 38px; }
-  @media (max-width: 380px) { .fab .bubble { display: none; } }
-
-  /* side menu */
-  .scrim { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 70; }
-  .menu { position: fixed; top: 0; left: 0; bottom: 0; width: min(86vw, 330px); z-index: 75; background: linear-gradient(170deg, var(--brand-a), var(--brand-b)); color: #fff; overflow-y: auto; padding: calc(18px + env(safe-area-inset-top, 0px)) 16px calc(24px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 12px; }
-  .menu-head { display: flex; justify-content: space-between; align-items: center; }
-  .menu-head b { font-size: 28px; font-weight: 700; }
-  .menu-head button { background: none; border: 0; color: var(--on-brand-soft); font-size: 36px; line-height: 1; cursor: pointer; width: 44px; height: 44px; }
-  .mi { height: 54px; border-radius: 999px; border: 2px solid rgba(255,255,255,.75); background: transparent; color: #fff; font: inherit; font-size: 20px; font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 12px; cursor: pointer; text-decoration: none; }
-  .mi.first { background: #f5f6ff; color: #1b1c33; border-color: #f5f6ff; }
-  .mi svg { width: 24px; height: 24px; }
-  .dm { display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 2px solid rgba(255,255,255,.75); border-radius: 999px; padding: 8px 14px; font-size: 20px; }
-  .sw { width: 64px; height: 34px; border-radius: 999px; border: 0; background: #f5f6ff; position: relative; cursor: pointer; flex: none; }
-  .sw::after { content: ""; position: absolute; top: 4px; left: 5px; width: 26px; height: 26px; border-radius: 50%; background: #9a9db8; transition: transform .2s; }
-  .sw[aria-checked="true"]::after { transform: translateX(28px); background: var(--brand-deep); }
-  .menu > * { flex: none; }
-  select.ctl.sm { background-position: calc(100% - 22px) 21px, calc(100% - 16px) 21px; }
-  .mi.danger { background: var(--danger); border-color: var(--danger); }
-  .welcome { margin: 0; font-size: 22px; font-weight: 700; }
-  .steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: var(--on-brand-soft); }
-  .sheet { position: fixed; inset: 0; z-index: 60; background: var(--bg); color: var(--fg); overflow-y: auto; }
-  .sheet::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 61; background: var(--brand-a); }
-  #sheet-top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 62; }
-  #sheet-top .top { position: static; }
-  .sheet .foot { padding-block: 22px 96px; }
-  .sheet-body { max-width: 560px; margin-inline: auto; display: flex; flex-direction: column; gap: 20px; padding-block: 22px 36px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  .blue { background: linear-gradient(160deg, var(--brand-a), var(--brand-b)); color: #fff; border-radius: 24px; padding: 24px 20px; box-shadow: 0 14px 30px rgba(50, 50, 200, .28); display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-  .blue-h { margin: 0; font-size: 26px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .blue-h.left { justify-content: flex-start; }
-  .blue-h svg, .page-h svg { width: 28px; height: 28px; flex: none; }
-  h3.blue-h { font-size: 22px; }
-  .white { background: var(--card); border: 1px solid var(--card-line); border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 10px 28px rgba(30, 30, 90, .08); min-width: 0; }
-  .white-h { margin: 0; color: #0d6efd; font-size: 26px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .white-h svg { width: 26px; height: 26px; }
-  .card-h { margin: 0; color: var(--brand-deep); font-size: 20px; font-weight: 700; padding-bottom: 10px; border-bottom: 1px solid var(--card-line); }
-  .card-h.bluebar { background: #0d6efd; color: #fff; border: 0; border-radius: 8px; text-align: center; padding: 10px; font-size: 17px; }
-  .page-h { margin: 0; font-size: 28px; font-weight: 700; color: #0d6efd; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .page-h.left { color: var(--fg); justify-content: flex-start; }
-  .f { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-  .f label, .lab-row label { font-size: 15px; font-weight: 500; color: var(--on-brand-soft); }
-  .white .f label { color: var(--muted); text-transform: uppercase; letter-spacing: .04em; font-size: 13px; }
-  .lab-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 460px) { .two { grid-template-columns: 1fr; } }
-  .ctl.sm { height: 48px; font-size: 16px; border-radius: 12px; border-width: 1px; }
-  textarea.ctl.sm { height: auto; min-height: 150px; }
-  textarea.ctl { height: auto; padding: 12px 16px; resize: vertical; line-height: 1.4; }
-  .ctl.file { height: auto; padding: 10px 12px; }
-  .white .ctl { border-color: var(--card-line); }
-  .infobox { background: #cff4fc; color: #055160; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px; font-size: 15px; }
-  .infobox p { margin: 0; overflow-wrap: anywhere; }
-  .infobox small { font-size: 11px; letter-spacing: .05em; margin-top: 6px; }
-  .go.sm { height: 50px; font-size: 18px; width: auto; align-self: center; padding: 0 32px; }
-  .go.grad { background: linear-gradient(135deg, var(--brand-deep), var(--brand-a)); width: 100%; }
-  .mini { margin: 0; font-size: 14px; color: var(--on-brand-soft); }
-  .white .mini, .mini.plain { color: var(--muted); }
-  .center { text-align: center; }
-  .small { font-size: 14px; }
-  .white .err { color: var(--danger); }
-  .tbl-wrap { overflow-x: auto; border: 1px solid var(--card-line); border-radius: 12px; }
-  .tbl { border-collapse: collapse; width: 100%; font-size: 14px; }
-  .tbl th, .tbl td { padding: 10px 12px; border-bottom: 1px solid var(--card-line); text-align: left; vertical-align: middle; }
-  .tbl tr:last-child td { border-bottom: 0; }
-  .tbl th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); white-space: nowrap; }
-  .tbl-empty { text-align: center !important; color: var(--muted); }
-  .tbl.svct { min-width: 640px; }
-  .tbl.svct td:nth-child(3) { min-width: 240px; font-weight: 500; }
-  .tbl.svct td:nth-child(4), .tbl.svct td:nth-child(5) { white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .groups { display: flex; flex-direction: column; gap: 22px; }
-  .grp { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-  .grp-h { background: var(--soft); color: var(--soft-fg); border-radius: 10px; padding: 10px 14px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
-  .grp-h svg { width: 18px; height: 18px; flex: none; }
-  .filter { display: flex; gap: 10px; flex-wrap: wrap; }
-  .filter select { flex: 0 0 150px; background-color: #198754; color: #fff; border-color: #198754; }
-  .filter input { flex: 1; min-width: 160px; }
-  .star { background: none; border: 0; font-size: 22px; color: #f5b301; cursor: pointer; padding: 2px 6px; }
-  .cart { width: 40px; height: 36px; border: 0; border-radius: 8px; background: #198754; color: #fff; cursor: pointer; display: grid; place-items: center; }
-  .cart svg { width: 20px; height: 20px; }
-  .empty { color: var(--muted); }
-  .head2 { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; }
-  .head2 > div { min-width: 0; }
-  .head2 input { flex: 1; min-width: 200px; }
-  .copyrow { display: flex; gap: 8px; align-items: center; }
-  .copyrow input { flex: 1; min-width: 0; }
-  .chip-btn { background: #f5f6ff; color: #1b1c33; border: 0; border-radius: 999px; padding: 8px 16px; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer; flex: none; }
-  .chip-btn.solid { background: #198754; color: #fff; border-radius: 10px; padding: 0 18px; height: 48px; }
-  .kv { margin: 0; display: flex; align-items: center; gap: 8px; font-weight: 500; }
-  .pill { background: #f5f6ff; color: #1b1c33; border-radius: 999px; padding: 2px 12px; font-size: 14px; font-weight: 700; }
-  .pill.ok { background: #198754; color: #fff; }
   .fmt { background: rgba(255,255,255,.15); border-radius: 14px; padding: 12px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; }
   .fmt code { background: rgba(255,255,255,.22); padding: 2px 6px; border-radius: 6px; font-family: ui-monospace, Menlo, monospace; font-size: 14px; overflow-wrap: anywhere; }
   .fmt-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -1144,4 +901,370 @@
     PAYMENTS.forEach(function (m, i) { var o = mk("option", null, m.label); o.value = String(i); method.appendChild(o); });
     function showInfo() {
       var m = PAYMENTS[Number(method.value)]; info.innerHTML = "";
-      m.lines.forEac
+      m.lines.forEach(function (l) { info.appendChild(mk("p", null, l)); });
+      if (m.copy) {
+        var c = mk("button", "chip-btn", "Copy account number"); c.type = "button";
+        c.addEventListener("click", function () { copyText({ value: m.copy, select: function () {} }, c); });
+        info.appendChild(c);
+      }
+    }
+    method.addEventListener("change", showInfo); showInfo();
+    $("p-shot").addEventListener("change", function () {
+      var f = this.files && this.files[0], pv = $("p-prev");
+      if (!f) { pv.hidden = true; return; }
+      pv.src = URL.createObjectURL(f); pv.hidden = false;
+    });
+    async function hist() {
+      var box = $("p-tbl"); if (!box) return;
+      var r = await sb.from("fund_requests").select("id,amount,status,created_at").eq("user_id", me.id).order("created_at", { ascending: false }).limit(50);
+      box.innerHTML = "";
+      var rows = (r.data || []).map(function (x) { return [String(x.id), dtime(x.created_at), fmt(Number(x.amount)), statusPill(x.status)]; });
+      box.appendChild(tableOf(["ID", "Date", "Amount ~ Rs", "Status"], rows, r.error ? cleanErr(r.error) : "No payments yet."));
+    }
+    hist();
+    $("p-go").addEventListener("click", async function () {
+      var amt = Number($("p-amt").value), file = $("p-shot").files && $("p-shot").files[0], err = $("p-err"), go = $("p-go");
+      if (!amt || amt <= 0) { err.textContent = "Enter the amount you sent."; return; }
+      if (!file) { err.textContent = "Add a photo of your payment receipt."; return; }
+      err.textContent = ""; go.disabled = true; go.textContent = "Sending...";
+      try {
+        var blob = await compressImage(file, 1600, 0.8);
+        var path = me.id + "/" + Date.now() + ".jpg";
+        var up = await sb.storage.from("receipts").upload(path, blob, { contentType: "image/jpeg" });
+        if (up.error) throw up.error;
+        var m = PAYMENTS[Number(method.value)];
+        var ins = await sb.from("fund_requests").insert({ user_id: me.id, username: me.username, amount: amt, method: m.label, receipt_path: path }).select().single();
+        if (ins.error) throw ins.error;
+        var out = $("p-out"); out.innerHTML = "";
+        var d = mk("div", "sent"); d.appendChild(mk("h3", null, "Request #" + ins.data.id + " sent"));
+        d.appendChild(mk("p", null, "We will check your payment and add " + money(amt) + " to your balance. You can see the status below."));
+        out.appendChild(d);
+        $("p-amt").value = ""; $("p-shot").value = ""; $("p-prev").hidden = true; hist();
+      } catch (e) { err.textContent = cleanErr(e); }
+      finally { go.disabled = false; go.textContent = "Send Payment Request"; }
+    });
+  };
+
+  // ---- My Orders ----
+  PAGES.orders = function (b) {
+    if (gate("orders", b)) return;
+    var status = "All Orders", STAT = ["Pending", "Processing", "Partial", "Completed", "Canceled", "All Orders"], all = [];
+    b.innerHTML = '<div class="srch-row"><input class="ctl sm" id="o-q" type="search" placeholder="Search by Link / ID / Status..." aria-label="Search orders"><button class="chip-btn solid" id="o-s" type="button">Search</button></div><section class="white chips" id="o-chips"></section><div class="olist" id="o-list"></div>';
+    var chips = $("o-chips");
+    STAT.forEach(function (s) {
+      var c = mk("button", "chipf s-" + s.split(" ")[0].toLowerCase(), s); c.type = "button"; c.setAttribute("aria-pressed", s === status ? "true" : "false");
+      c.addEventListener("click", function () {
+        status = s;
+        Array.prototype.forEach.call(chips.children, function (x) { x.setAttribute("aria-pressed", x.textContent === status ? "true" : "false"); });
+        render();
+      });
+      chips.appendChild(c);
+    });
+    function render() {
+      var q = $("o-q").value.trim().toLowerCase(), box = $("o-list"); box.innerHTML = "";
+      var arr = all.filter(function (o) { return (status === "All Orders" || o.status === status) && (!q || (o.id + " " + o.link + " " + o.status + " " + o.service_name).toLowerCase().indexOf(q) > -1); });
+      if (!arr.length) { box.appendChild(mk("div", "notice", "No orders found.")); return; }
+      arr.forEach(function (o) {
+        var d = mk("div", "ocard"), r1 = mk("div", "row");
+        r1.appendChild(mk("b", null, "#" + o.id)); r1.appendChild(statusPill(o.status)); d.appendChild(r1);
+        d.appendChild(mk("div", null, o.service_name)); d.appendChild(mk("div", "muted", o.quantity + " | " + money(Number(o.total))));
+        d.appendChild(mk("div", "muted brk", o.link)); d.appendChild(mk("div", "muted", dtime(o.created_at))); box.appendChild(d);
+      });
+    }
+    $("o-q").addEventListener("input", render); $("o-s").addEventListener("click", render);
+    $("o-list").appendChild(mk("div", "notice", "Loading..."));
+    sb.from("orders").select("*").eq("user_id", me.id).order("created_at", { ascending: false }).limit(200).then(function (r) {
+      if (r.error) { $("o-list").innerHTML = ""; $("o-list").appendChild(mk("div", "notice", cleanErr(r.error))); return; }
+      all = r.data || []; render();
+    });
+    b.appendChild(aboutCard());
+  };
+
+  // ---- Mass Order ----
+  PAGES.mass = function (b) {
+    if (gate("mass", b)) return;
+    b.innerHTML = '<section class="blue"><h2 class="blue-h left">' + IC.layers + 'Mass Order</h2><p class="mini">Paste multiple orders (one per line). The total comes out of your balance.</p>' +
+      '<div class="fmt"><div class="fmt-row"><span>Format: <code>service_id|quantity|link</code> (one per line)</span><button type="button" class="chip-btn" id="m-sample">Insert Sample</button></div><div class="fmt-row">Example: <code>3866|1000|https://example.com</code></div></div>' +
+      '<div class="f"><div class="lab-row"><label for="m-text">Mass Orders</label><span class="mini" id="m-count">0 lines</span></div><textarea class="ctl sm" id="m-text" rows="10" placeholder="3866|1000|https://link.com&#10;3817|500|https://link.com/post/123"></textarea></div>' +
+      '<div class="err" id="m-err" role="alert"></div><button class="go sm" id="m-go" type="button">Submit Orders</button><p class="mini center">Tip: Avoid extra spaces. Double-check that the link is correct.</p><div id="m-out"></div></section>';
+    var ta = $("m-text");
+    function lines() { return ta.value.split("\n").map(function (l) { return l.trim(); }).filter(Boolean); }
+    function count() { var n = lines().length; $("m-count").textContent = n + (n === 1 ? " line" : " lines"); }
+    ta.addEventListener("input", count);
+    $("m-sample").addEventListener("click", function () { ta.value = "3866|1000|https://example.com\n3817|500|https://example.com/post/123"; count(); });
+    $("m-go").addEventListener("click", async function () {
+      var errs = [], ok = [], err = $("m-err"), out = $("m-out"), go = $("m-go");
+      lines().forEach(function (l, i) {
+        var p = l.split("|"), n = "Line " + (i + 1) + ": ";
+        if (p.length < 3) { errs.push(n + "use service_id|quantity|link"); return; }
+        var s = SERVICES.filter(function (x) { return String(x.id) === p[0].trim(); })[0], q = Number(p[1].trim()), link = p.slice(2).join("|").trim();
+        if (!s) { errs.push(n + "service " + p[0].trim() + " not found"); return; }
+        if (!q || q < s.min || q > s.max) { errs.push(n + "quantity must be " + s.min + " to " + s.max); return; }
+        if (!/^https?:\/\/\S+\.\S+/i.test(link)) { errs.push(n + "link must start with https://"); return; }
+        ok.push({ s: s, q: q, link: link });
+      });
+      out.innerHTML = "";
+      if (!ok.length && !errs.length) { err.textContent = "Paste at least one order."; return; }
+      if (errs.length) { err.style.whiteSpace = "pre-line"; err.textContent = errs.slice(0, 6).join("\n"); return; }
+      err.textContent = ""; go.disabled = true;
+      var done = [], stopped = "";
+      for (var i = 0; i < ok.length; i++) {
+        var r = await sb.rpc("place_order", { p_service_id: ok[i].s.id, p_qty: ok[i].q, p_link: ok[i].link });
+        if (r.error) { stopped = "Line " + (i + 1) + ": " + cleanErr(r.error); break; }
+        done.push("#" + r.data.id + "  " + r.data.service_name + "  " + money(Number(r.data.total)));
+      }
+      await refreshMe(); go.disabled = false;
+      var d = mk("div", "sent");
+      d.appendChild(mk("h3", null, done.length + " of " + ok.length + " orders placed"));
+      if (done.length) d.appendChild(mk("pre", null, done.join("\n")));
+      if (stopped) d.appendChild(mk("p", "errp", stopped + " The remaining lines were not placed."));
+      d.appendChild(mk("p", null, "Balance left: " + money(me ? me.balance : 0)));
+      out.appendChild(d);
+    });
+  };
+
+  // ---- Refer & Earn ----
+  PAGES.refer = function (b) {
+    b.innerHTML = '<h2 class="page-h">Refer &amp; Earn</h2><p class="mini plain center">Coming soon.</p>';
+    b.appendChild(aboutCard());
+  };
+
+  // ---- Admin ----
+  var ADM_STATUS = ["Pending", "Processing", "Partial", "Completed", "Canceled"];
+  PAGES.admin = function (b) {
+    if (gate("admin", b)) return;
+    if (!me.is_admin) { b.appendChild(mk("p", "empty", "This page is for the shop owner only.")); return; }
+    b.innerHTML = '<h2 class="page-h">Admin</h2><div class="tabs dark"><button type="button" id="ad-t1">Payments</button><button type="button" id="ad-t2">Orders</button><button type="button" id="ad-t3">Add balance</button></div><div id="ad-area"></div>';
+    var area = $("ad-area");
+    function tab(n) {
+      ["ad-t1", "ad-t2", "ad-t3"].forEach(function (id, i) { $(id).setAttribute("aria-pressed", String(i === n)); });
+      if (n === 0) admPay(area); else if (n === 1) admOrders(area, "Pending"); else admBalance(area);
+    }
+    $("ad-t1").addEventListener("click", function () { tab(0); });
+    $("ad-t2").addEventListener("click", function () { tab(1); });
+    $("ad-t3").addEventListener("click", function () { tab(2); });
+    tab(0);
+  };
+  function arm(btn, label, fn) {
+    var armed = false, t = null;
+    btn.addEventListener("click", function () {
+      if (!armed) { armed = true; btn.textContent = "Tap again to confirm"; btn.classList.add("armed"); t = setTimeout(function () { armed = false; btn.textContent = label; btn.classList.remove("armed"); }, 4000); return; }
+      clearTimeout(t); armed = false; btn.classList.remove("armed"); btn.textContent = label; fn();
+    });
+  }
+  async function admPay(area) {
+    area.innerHTML = ""; area.appendChild(mk("div", "notice", "Loading..."));
+    var r = await sb.from("fund_requests").select("*").order("created_at", { ascending: false }).limit(60);
+    area.innerHTML = "";
+    if (r.error) { area.appendChild(mk("div", "notice", cleanErr(r.error))); return; }
+    if (!r.data.length) { area.appendChild(mk("div", "notice", "No payment requests yet.")); return; }
+    var list = r.data.filter(function (x) { return x.status === "Pending"; }).concat(r.data.filter(function (x) { return x.status !== "Pending"; }));
+    list.forEach(function (f) {
+      var d = mk("div", "ocard"), r1 = mk("div", "row");
+      r1.appendChild(mk("b", null, "#" + f.id + "  " + f.username)); r1.appendChild(statusPill(f.status)); d.appendChild(r1);
+      d.appendChild(mk("div", "muted", f.method + " | " + dtime(f.created_at)));
+      if (f.status !== "Pending") { d.appendChild(mk("div", null, "Amount: " + money(Number(f.credited != null ? f.credited : f.amount)))); area.appendChild(d); return; }
+      var lab = mk("label", "muted", "Amount to add (LKR)"); lab.htmlFor = "amt-" + f.id; d.appendChild(lab);
+      var inp = mk("input", "ctl sm"); inp.id = "amt-" + f.id; inp.type = "number"; inp.inputMode = "decimal"; inp.value = f.amount; d.appendChild(inp);
+      var img = mk("img", "shot"); img.hidden = true; img.alt = "Receipt"; d.appendChild(img);
+      var msg = mk("div", "err"); d.appendChild(msg);
+      var row = mk("div", "btn-row");
+      var view = mk("button", "chip-btn", "View receipt"); view.type = "button";
+      view.addEventListener("click", async function () {
+        if (!img.hidden) { img.hidden = true; return; }
+        var s = await sb.storage.from("receipts").createSignedUrl(f.receipt_path, 300);
+        if (s.error) { msg.textContent = cleanErr(s.error); return; }
+        img.src = s.data.signedUrl; img.hidden = false;
+      });
+      var ok = mk("button", "chip-btn solid", "Approve and add"); ok.type = "button";
+      arm(ok, "Approve and add", async function () {
+        var amt = Number(inp.value); if (!amt || amt <= 0) { msg.textContent = "Enter the amount."; return; }
+        var x = await sb.rpc("admin_add_balance", { p_username: f.username, p_amount: amt, p_request_id: f.id });
+        if (x.error) msg.textContent = cleanErr(x.error); else admPay(area);
+      });
+      var no = mk("button", "chip-btn bad", "Reject"); no.type = "button";
+      arm(no, "Reject", async function () {
+        var x = await sb.rpc("admin_reject_request", { p_request_id: f.id });
+        if (x.error) msg.textContent = cleanErr(x.error); else admPay(area);
+      });
+      row.appendChild(view); row.appendChild(ok); row.appendChild(no); d.appendChild(row); area.appendChild(d);
+    });
+  }
+  async function admOrders(area, filter) {
+    area.innerHTML = "";
+    var chips = mk("div", "chips2");
+    ["Pending", "Processing", "Partial", "Completed", "Canceled", "All"].forEach(function (s) {
+      var c = mk("button", "chipf", s); c.type = "button"; c.setAttribute("aria-pressed", String(s === filter));
+      c.addEventListener("click", function () { admOrders(area, s); }); chips.appendChild(c);
+    });
+    area.appendChild(chips);
+    var box = mk("div", "olist"); box.appendChild(mk("div", "notice", "Loading...")); area.appendChild(box);
+    var qy = sb.from("orders").select("*").order("created_at", { ascending: false }).limit(80);
+    if (filter !== "All") qy = qy.eq("status", filter);
+    var r = await qy; box.innerHTML = "";
+    if (r.error) { box.appendChild(mk("div", "notice", cleanErr(r.error))); return; }
+    if (!r.data.length) { box.appendChild(mk("div", "notice", "No orders here.")); return; }
+    r.data.forEach(function (o) {
+      var d = mk("div", "ocard"), r1 = mk("div", "row");
+      r1.appendChild(mk("b", null, "#" + o.id + "  " + o.username)); r1.appendChild(statusPill(o.status)); d.appendChild(r1);
+      d.appendChild(mk("div", null, o.service_name)); d.appendChild(mk("div", "muted", o.quantity + " | " + money(Number(o.total)) + " | " + dtime(o.created_at)));
+      var a = mk("a", "muted brk lnk2", o.link); a.href = o.link; a.target = "_blank"; a.rel = "noopener"; d.appendChild(a);
+      var msg = mk("div", "err"); 
+      if (o.status !== "Canceled") {
+        var row = mk("div", "btn-row"), sel = mk("select", "ctl sm"); sel.setAttribute("aria-label", "Status of order " + o.id);
+        ADM_STATUS.forEach(function (s) { var op = mk("option", null, s); op.value = s; if (s === o.status) op.selected = true; sel.appendChild(op); });
+        var save = mk("button", "chip-btn solid", "Save"); save.type = "button";
+        save.addEventListener("click", async function () {
+          if (sel.value === o.status) return;
+          if (sel.value === "Canceled" && !save.dataset.ok) { save.dataset.ok = "1"; save.textContent = "Refunds customer. Tap again"; return; }
+          var x = await sb.rpc("admin_set_order_status", { p_order_id: o.id, p_status: sel.value });
+          if (x.error) msg.textContent = cleanErr(x.error); else admOrders(area, filter);
+        });
+        row.appendChild(sel); row.appendChild(save); d.appendChild(row);
+      }
+      d.appendChild(msg); box.appendChild(d);
+    });
+  }
+  function admBalance(area) {
+    area.innerHTML = '<section class="white"><div class="f"><label for="ab-user">Username</label><input class="ctl sm" id="ab-user" autocapitalize="none" placeholder="customer username"></div>' +
+      '<div class="f"><label for="ab-amt">Amount (LKR)</label><input class="ctl sm" id="ab-amt" type="number" inputmode="decimal" placeholder="500"></div>' +
+      '<p class="mini plain">Use a minus number to take balance off.</p><div class="err" id="ab-msg" role="alert"></div><div class="ok" id="ab-ok" role="status"></div>' +
+      '<div class="btn-row"><button class="chip-btn" id="ab-check" type="button">Check user</button><button class="chip-btn solid" id="ab-go" type="button">Add balance</button></div></section>';
+    $("ab-check").addEventListener("click", async function () {
+      var u = $("ab-user").value.trim().toLowerCase(); $("ab-ok").textContent = ""; $("ab-msg").textContent = "";
+      var r = await sb.from("profiles").select("username,balance").eq("username", u).maybeSingle();
+      if (r.error) $("ab-msg").textContent = cleanErr(r.error); else if (!r.data) $("ab-msg").textContent = "No user named " + u + "."; else $("ab-ok").textContent = r.data.username + " has " + money(Number(r.data.balance));
+    });
+    arm($("ab-go"), "Add balance", async function () {
+      var u = $("ab-user").value.trim().toLowerCase(), amt = Number($("ab-amt").value); $("ab-ok").textContent = ""; $("ab-msg").textContent = "";
+      if (!u || !amt) { $("ab-msg").textContent = "Enter the username and amount."; return; }
+      var r = await sb.rpc("admin_add_balance", { p_username: u, p_amount: amt, p_request_id: null });
+      if (r.error) $("ab-msg").textContent = cleanErr(r.error); else { $("ab-ok").textContent = "Done. " + u + " now has " + money(Number(r.data)); $("ab-amt").value = ""; }
+    });
+  }
+
+  $("bal-login").addEventListener("click", function () { afterLogin = null; openSheet("login"); });
+  // the admin button and login page are opened from the menu too
+  function init() {
+    if (sb) {
+      sb.auth.onAuthStateChange(function (ev) { if (ev === "SIGNED_OUT") setTimeout(function () { me = null; myOrderCount = 0; paint(); }, 0); });
+      refreshMe(); loadServices();
+    } else paint();
+  }
+
+  // Tickets
+  PAGES.tickets = function (b) {
+    b.innerHTML = '<div class="head2"><div><h2 class="page-h left">' + IC.headset + 'Support Tickets</h2><p class="mini plain">Get help from our expert support team.</p></div>' +
+      '<input class="ctl sm" id="t-track" type="search" inputmode="numeric" placeholder="Track your ticket ID..." aria-label="Track your ticket ID"></div>' +
+      '<section class="white"><h3 class="card-h">Open a New Request</h3>' +
+      '<div class="f"><label for="t-cat">Select Category</label><select class="ctl sm" id="t-cat"><option>Order</option><option>Payment</option><option>Account</option><option>Other</option></select></div>' +
+      '<div class="f"><label for="t-msg">Your Message</label><textarea class="ctl sm" id="t-msg" rows="5" placeholder="Please provide your Order ID if applicable..."></textarea></div>' +
+      '<p class="mini">You can attach photos or videos in the WhatsApp chat after you send the ticket.</p>' +
+      '<div class="err" id="t-err" role="alert"></div><button class="go sm grad" id="t-go" type="button">Submit Ticket</button><div id="t-out"></div></section>' +
+      '<section class="white"><h3 class="card-h">Recent History</h3><div id="t-tbl"></div></section>';
+    function hist() {
+      var q = $("t-track").value.trim();
+      var rows = jget("nava_tickets", []).filter(function (x) { return !q || String(x.id).indexOf(q) > -1; }).reverse()
+        .map(function (x) { return [String(x.id), x.cat, x.status, x.when]; });
+      var box = $("t-tbl"); box.innerHTML = ""; box.appendChild(tableOf(["ID", "Topic", "Status", "Date"], rows, "No tickets found."));
+    }
+    $("t-track").addEventListener("input", hist); hist();
+    $("t-go").addEventListener("click", function () {
+      var msgv = $("t-msg").value.trim(), err = $("t-err");
+      if (msgv.length < 5) { err.textContent = "Write your message so we can help."; return; }
+      err.textContent = "";
+      var arr = jget("nava_tickets", []), id = nextId(arr, 2001);
+      arr.push({ id: id, cat: $("t-cat").value, status: "Open", when: nowStr() }); jset("nava_tickets", arr.slice(-50));
+      var msg = "Support ticket - NAVA SOCIAL BOOST" + who() + "\n\nTicket ID: " + id + "\nCategory: " + $("t-cat").value + "\nMessage: " + msgv;
+      var out = $("t-out"); out.innerHTML = ""; out.appendChild(sentCard("Ticket ready", msg)); $("t-msg").value = ""; hist();
+    });
+  };
+
+  // Services
+  PAGES.services = function (b) {
+    b.innerHTML = '<h2 class="page-h">' + IC.layers + 'Services &amp; Pricing</h2><div class="filter"><select class="ctl sm green" id="s-cat" aria-label="Category"></select><input class="ctl sm" id="s-q" type="search" placeholder="Search for a service..." aria-label="Search for a service"></div><div class="groups" id="s-list"></div>';
+    var sel = $("s-cat");
+    [{ key: "all", label: "All" }, { key: "fav", label: "My favorite" }].concat(CATS.filter(function (c) { return c.key !== "all"; })).forEach(function (c) {
+      var o = mk("option", null, c.label); o.value = c.key; sel.appendChild(o);
+    });
+    function render() {
+      var q = $("s-q").value.trim().toLowerCase(), c = sel.value, favs = jget("nava_favs", []), box = $("s-list"), any = false;
+      box.innerHTML = "";
+      CATS.forEach(function (cat) {
+        if (cat.key === "all" || (c !== "all" && c !== "fav" && c !== cat.key)) return;
+        var list = SERVICES.filter(function (s) {
+          return s.cat === cat.key && (c !== "fav" || favs.indexOf(s.id) > -1) && (!q || (s.name + " " + s.id).toLowerCase().indexOf(q) > -1);
+        });
+        if (!list.length) return;
+        any = true;
+        var g = mk("div", "grp"), gh = mk("div", "grp-h"); gh.innerHTML = IC.layers; gh.appendChild(mk("span", null, cat.label + " Services")); g.appendChild(gh);
+        var rows = list.map(function (s) {
+          var star = mk("button", "star", favs.indexOf(s.id) > -1 ? "★" : "☆"); star.type = "button"; star.setAttribute("aria-label", "Favourite");
+          star.addEventListener("click", function () { var f = jget("nava_favs", []), i = f.indexOf(s.id); if (i > -1) f.splice(i, 1); else f.push(s.id); jset("nava_favs", f); render(); });
+          var cart = mk("button", "cart"); cart.type = "button"; cart.setAttribute("aria-label", "Order this service"); cart.innerHTML = IC.cart;
+          cart.addEventListener("click", function () { pickService(s); });
+          return [star, String(s.id), s.name, "Rs ~ " + fmt(s.price), s.min + " / " + s.max, cart];
+        });
+        g.appendChild(tableOf(["Fav", "ID", "Service", "Rate (per 1000)", "Min / Max", "Actions"], rows, "", "svct")); box.appendChild(g);
+      });
+      if (!any) box.appendChild(mk("p", "empty", "No services found."));
+    }
+    sel.addEventListener("change", render); $("s-q").addEventListener("input", render); render();
+  };
+
+  PAGES.blog = function (b) {
+    b.innerHTML = '<h2 class="page-h">' + IC.news + 'Blogs</h2><p class="mini plain center">Latest updates &amp; guides from NAVA SOCIAL BOOST</p>';
+  };
+  PAGES.api = function (b) {
+    b.innerHTML = '<h2 class="page-h">Api Docs</h2><p class="mini plain center">API access is not available yet.</p>';
+  };
+  PAGES.terms = function (b) {
+    var logo = document.querySelector("header.top .logo").src;
+    b.innerHTML = '<section class="blue terms"><img class="tlogo" alt="NAVA SOCIAL BOOST logo" width="88" height="88">' +
+      '<h2 class="blue-h">' + IC.doc + 'Terms &amp; Conditions</h2><p class="center">For <b>NAVA SOCIAL BOOST</b> SMM Panel</p>' +
+      '<p>The use of services provided by <b>NAVA SOCIAL BOOST</b> establishes agreement to the following terms. By registering or using our services, you confirm that you have fully read and accepted these terms. We will not be held liable for any loss caused by ignoring these terms.</p>' +
+      '<h3>Delivery Policy</h3><ul><li>By placing an order, you automatically accept all terms listed here.</li><li>Terms may change anytime without notice. Customers must check before ordering.</li><li>You must follow Instagram, YouTube, Facebook, TikTok and other platform policies.</li><li>Rates may change anytime without notice.</li><li>No guaranteed delivery time for any service; it depends on system load.</li><li>We may adjust service type if needed to complete the order.</li><li>Drop ratio or "Non Drop" guarantee may change after social media updates.</li></ul>' +
+      '<h3>Disclaimer</h3><ul><li><b>NAVA SOCIAL BOOST</b> will not be responsible for any business or personal damages.</li></ul>' +
+      '<h3>Liabilities</h3><ul><li>We are not responsible for suspension, deletion or restriction by Instagram, YouTube, Twitter, Facebook or any other platform.</li></ul>' +
+      '<h3>Privacy Policy</h3><ul><li>Your data is used only to complete orders.</li><li>We never sell or share your personal information.</li><li>Data is stored securely with encryption.</li></ul>' +
+      '<h3>Refund Policy</h3><ul><li>No refund to payment methods after deposit.</li><li>Balance must be used for panel orders only.</li><li>Chargeback or disputes lead to account termination and service removal.</li><li>Orders cannot be cancelled after placing.</li><li>If non-deliverable, the refund is added to panel balance only.</li><li>Private account or wrong link orders are not refundable.</li><li>Fraud means a permanent ban.</li><li>Do not use two servers for the same link at the same time.</li></ul>' +
+      '<h3>About Services</h3><ul><li>Services are for boosting appearance only.</li><li>No guarantee of engagement or interactions.</li><li>Not all accounts may have a profile picture, bio or posts.</li><li>No nudity or prohibited content allowed.</li><li>For pages that already had 100K+ followers, refill may not apply.</li></ul>' +
+      '<p class="center small">© 2026 <b>NAVA SOCIAL BOOST</b> — All Rights Reserved.</p></section>';
+    b.querySelector(".tlogo").src = logo;
+  };
+
+  // build the page shell (header + footer copied from the home page)
+  (function () {
+    var top = document.querySelector("header.top").cloneNode(true), foot = document.querySelector("footer.foot").cloneNode(true);
+    [top, foot].forEach(function (r) { Array.prototype.forEach.call(r.querySelectorAll("[id]"), function (n) { n.removeAttribute("id"); }); });
+    $("sheet-top").appendChild(top); $("sheet-foot").appendChild(foot);
+    var lg = top.querySelector(".logo"); lg.style.cursor = "pointer"; lg.addEventListener("click", closeSheet);
+  })();
+  Array.prototype.forEach.call(document.querySelectorAll(".burger"), function (b) { b.addEventListener("click", openMenu); });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-wa]"), function (a) { a.href = waLink(hello); });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-sheet]"), function (b) {
+    b.addEventListener("click", function () { closeMenu(); openSheet(b.dataset.sheet); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-go]"), function (b) {
+    b.addEventListener("click", function () {
+      closeMenu(); closeSheet();
+      var t = b.dataset.go === "top" ? document.body : $(b.dataset.go);
+      if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  var sw = $("dm-sw");
+  function setTheme(dark, persist) {
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    sw.setAttribute("aria-checked", dark ? "true" : "false");
+    if (persist) save("nava_theme", dark ? "dark" : "light");
+  }
+  sw.addEventListener("click", function () { setTheme(sw.getAttribute("aria-checked") !== "true", true); });
+  var savedTheme = load("nava_theme");
+  if (savedTheme) setTheme(savedTheme === "dark", false);
+  else sw.setAttribute("aria-checked", window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "true" : "false");
+
+  fillServices();
+  init();
+</script>
+</body></html>
