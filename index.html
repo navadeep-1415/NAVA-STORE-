@@ -705,7 +705,7 @@
   // ===== accounts, balance, orders (Supabase) =====
   var configured = /^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test(SUPABASE_URL) && SUPABASE_KEY.length > 30 && SUPABASE_KEY.indexOf("PASTE") < 0;
   var sb = (configured && window.supabase) ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
-  var me = null, myOrderCount = 0, afterLogin = null;
+  var me = null, myOrderCount = 0, afterLogin = null; var lastErr = "";
 
   function cleanErr(e) {
     var m = (e && e.message) ? e.message : String(e || "");
@@ -740,9 +740,10 @@
       var uid = s.data && s.data.session ? s.data.session.user.id : null;
       if (!uid) { me = null; myOrderCount = 0; paint(); return; }
       var p = await sb.from("profiles").select("id,username,balance,is_admin").eq("id", uid).single();
+      lastErr = p.error ? (p.error.message || "profile error") : "";
       me = p.data ? { id: p.data.id, username: p.data.username, balance: Number(p.data.balance), is_admin: !!p.data.is_admin } : null;
       if (me) { var c = await sb.from("orders").select("id", { count: "exact", head: true }).eq("user_id", me.id); myOrderCount = c.count || 0; }
-    } catch (e) { /* offline: keep what we have */ }
+    } catch (e) { lastErr = String((e && e.message) || e); }
     paint();
   }
   async function loadServices() {
@@ -846,6 +847,7 @@
           if (r.error) throw r.error;
         }
         await refreshMe();
+        if (!me) throw new Error("Logged in, but your account could not be loaded. " + (lastErr || "Please contact the shop owner."));
         var next = afterLogin; afterLogin = null;
         if (next) next(); else closeSheet();
       } catch (e) { err.textContent = cleanErr(e); }
